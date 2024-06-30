@@ -1,7 +1,7 @@
 
 1. Build image
 ```bash
-podman build --file Dockerfile . --tag ubuntu-wsl:1.0.0
+podman build --file Dockerfile . --tag ubuntu-wsl:1.0.0 --squash
 ```
 
 2. Running image
