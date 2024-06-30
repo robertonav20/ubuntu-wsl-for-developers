@@ -6,9 +6,9 @@ RUN apt update && apt upgrade -y && \
 WORKDIR /tmp
 
 # Install CLI utilities
-# COPY cli.sh ./
-# RUN chmod 755 cli.sh
-# RUN ./cli.sh
+COPY cli.sh ./
+RUN chmod 755 cli.sh
+RUN ./cli.sh
 
 # Install Components
 COPY components.sh ./

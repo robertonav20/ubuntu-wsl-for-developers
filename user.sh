@@ -26,6 +26,7 @@ sudo usermod -aG sudo $USER_NAME
 runuser -u $USER_NAME -- sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo "$USER_NAME" | runuser -u $USER_NAME -- chsh -s $(which zsh)
 runuser -u $USER_NAME -- git clone https://github.com/romkatv/powerlevel10k.git /home/${USER_NAME}/.oh-my-zsh/themes/powerlevel10k
+runuser -u $USER_NAME -- echo ZSH_THEME="powerlevel10k/powerlevel10k" >> /home/${USER_NAME}/.zshrc
 
 if [[ ! -d "$FONTS_DIR" ]]; then
     mkdir -p "$FONTS_DIR"
