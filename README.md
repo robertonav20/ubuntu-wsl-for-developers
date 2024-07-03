@@ -23,3 +23,15 @@ wsl --import "Ubuntu-WSL-1.0.0" C:\\Users\\rob\\Ubuntu-WSL-1.0.0 .\\ubuntu-wsl-1
 ```bash
 wsl -d Ubuntu-WSL-1.0.0
 ```
+
+
+## Publish image to github registry
+1. Login
+```bash
+echo "YOUR_PASSWORD" | podman login ghcr.io --username YOUR_USERNAME --password-stdin
+```
+2. Push
+```bash
+podman tag ubuntu-wsl:1.0.0 ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.0.0
+podman push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.0.0
+```

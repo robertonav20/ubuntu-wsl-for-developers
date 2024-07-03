@@ -25,3 +25,5 @@ RUN echo "Clean tmp folder because contains useless files of installation"
 RUN rm -rf ./*
 
 WORKDIR /
+
+LABEL org.opencontainers.image.source https://github.com/robertonav20/customized-wsl-image
