@@ -27,3 +27,5 @@ RUN rm -rf ./*
 WORKDIR /
 
 LABEL org.opencontainers.image.source https://github.com/robertonav20/customized-wsl-image
+LABEL org.opencontainers.image.description="Customized Ubuntu WSL to speed up configuration"
+LABEL org.opencontainers.image.licenses=MIT
