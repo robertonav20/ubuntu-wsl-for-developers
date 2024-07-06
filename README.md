@@ -37,7 +37,7 @@ wsl install -d Ubuntu-WSL-1.0.0
 NOTE: all steps can be done with `Podman Desktop`
 
 ## Publish image to github registry
-1. Login
+1. Login Github Registry
 ```bash
 echo "YOUR_PASSWORD" | podman login ghcr.io --username YOUR_USERNAME --password-stdin
 ```
@@ -46,7 +46,12 @@ echo "YOUR_PASSWORD" | podman login ghcr.io --username YOUR_USERNAME --password-
 podman tag ubuntu-wsl:1.0.0 ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.0.0
 podman push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.0.0
 ```
-3. Push Docker Registry
+
+1. Login Github Registry
+```bash
+echo "YOUR_PASSWORD" | podman login docker.io --username YOUR_USERNAME --password-stdin
+```
+2. Push Docker Registry
 ```bash
 podman tag ubuntu-wsl:1.0.0 docker.io/robnav24241/customized-wsl-image:1.0.0
 podman push docker.io/robnav24241/customized-wsl-image:1.0.0
