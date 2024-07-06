@@ -17,6 +17,9 @@ USER_NAME=developer
 FONTS_VERSION='2.1.0'
 FONTS_DIR="/home/${USER_NAME}/.local/share/fonts"
 
+# Add password to root user
+echo -e "password\npassword" | passwd root
+
 # Create user and add to sudo group
 useradd -m $USER_NAME
 echo -e "$USER_NAME\n$USER_NAME" | passwd $USER_NAME
