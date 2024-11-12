@@ -13,7 +13,6 @@ declare -a fonts=(
 set -e
 
 # Define variables
-USER_NAME=developer
 FONTS_VERSION='2.1.0'
 FONTS_DIR="/home/${USER_NAME}/.local/share/fonts"
 
@@ -24,12 +23,38 @@ echo -e "password\npassword" | passwd root
 useradd -m $USER_NAME
 echo -e "$USER_NAME\n$USER_NAME" | passwd $USER_NAME
 sudo usermod -aG sudo $USER_NAME
+sudo tee -a /etc/wsl.conf << EOF
+[user]
+default=$USER_NAME
+EOF
+
 
 # Add oh my zsh and p10k
 runuser -u $USER_NAME -- sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo "$USER_NAME" | runuser -u $USER_NAME -- chsh -s $(which zsh)
 runuser -u $USER_NAME -- git clone https://github.com/romkatv/powerlevel10k.git /home/${USER_NAME}/.oh-my-zsh/themes/powerlevel10k
-runuser -u $USER_NAME -- echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" >> /home/${USER_NAME}/.zshrc
+runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-completions.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-completions
+runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-history-substring-search.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+sudo tee -a /home/${USER_NAME}/.zshrc << EOF
+ZSH_THEME=\"powerlevel10k/powerlevel10k\"
+
+# Terminal autocomplete fix
+autoload -Uz compinit && compinit
+
+plugins=(
+    git
+    docker
+    asdf
+    zsh-autosuggestions
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+)
+source /home/${USER_NAME}/.oh-my-zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/${USER_NAME}/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+EOF
 
 if [[ ! -d "$FONTS_DIR" ]]; then
     mkdir -p "$FONTS_DIR"

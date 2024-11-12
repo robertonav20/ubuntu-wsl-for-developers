@@ -23,10 +23,33 @@ apt install $NODE_JS_VERSION -y
 echo "Installing $PYTHON_VERSION"
 apt install $PYTHON_VERSION -y
 
-# Install Podman and Podman Compose
-echo "Installing podman and podman-compose"
-apt install podman -y
-pip3 install podman-compose
+# Install Docker and Docker Compose
+echo "Installing docker and docker-compose"
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Configure Docker
+sudo groupadd docker
+sudo usermod -aG docker $USER_NAME
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+sudo tee -a /etc/wsl.conf << EOF
+[boot]
+systemd=true
+EOF
 
 # Install Java 17
 echo "Installing $JAVA_VERSION"

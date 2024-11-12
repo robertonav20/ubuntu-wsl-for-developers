@@ -26,7 +26,7 @@ install_binary_from_archive() {
     echo "Downloading ${filename} from $url"
     curl -Lo ${filename} $url
     ls -la
-    
+
     echo "Extracting ${filename}"
 
     if [[ "$extension" == "gz" || "$extension" == "tar.gz" ]]; then
