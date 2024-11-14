@@ -37,6 +37,7 @@ runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-autosuggesti
 runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-completions.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-completions
 runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-history-substring-search.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+runuser -u $USER_NAME -- git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/${USER_NAME}/.oh-my-zsh/custom/plugins/zsh-autocomplete
 sudo tee -a /home/${USER_NAME}/.zshrc << EOF
 ZSH_THEME=\"powerlevel10k/powerlevel10k\"
 
@@ -51,9 +52,22 @@ plugins=(
     zsh-completions
     zsh-history-substring-search
     zsh-syntax-highlighting
+    zsh-autocomplete
 )
 source /home/${USER_NAME}/.oh-my-zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /home/${USER_NAME}/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+typeset -g POWERLEVEL9K_DIR_BACKGROUND=25
+typeset -g POWERLEVEL9K_DIR_FOREGROUND=15
+typeset -g POWERLEVEL9K_TIME_BACKGROUND=25
+typeset -g POWERLEVEL9K_TIME_FOREGROUND=15
+typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=15
+typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=214
+typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=15
+typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=214
+typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=15
+typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=214
+
 EOF
 
 if [[ ! -d "$FONTS_DIR" ]]; then
