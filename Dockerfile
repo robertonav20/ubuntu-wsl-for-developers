@@ -1,5 +1,6 @@
 FROM ubuntu:jammy
-RUN apt update && apt upgrade -y && \
+RUN apt update && \
+    apt upgrade -y && \
     apt install -y ca-certificates curl fontconfig nano sudo unzip vim wget && \
     apt clean
 
@@ -20,14 +21,13 @@ RUN chmod 755 cli.sh && ./cli.sh && \
 
 RUN rm -rf /tmp
 
-RUN apt clean
 RUN echo "Clean tmp folder because contains useless files of installation"
-RUN rm -rf ./*
+RUN apt clean && rm -rf ./*
 
 WORKDIR /
 
-LABEL org.opencontainers.image.source https://github.com/robertonav20/customized-wsl-image
-LABEL org.opencontainers.image.description "Customized Ubuntu WSL to speed up configuration"
-LABEL org.opencontainers.image.licenses MIT
+LABEL org.opencontainers.image.source=https://github.com/robertonav20/customized-wsl-image
+LABEL org.opencontainers.image.description="Customized Ubuntu WSL to speed up configuration"
+LABEL org.opencontainers.image.licenses=MIT
 
 USER developer
