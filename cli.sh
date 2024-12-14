@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## REGION Functions
+
 # Function to download and install a binary
 install_binary() {
     local name=$1

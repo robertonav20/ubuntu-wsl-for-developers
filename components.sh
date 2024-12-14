@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ## REGION Functions
-##
 
 # Define version
 JAVA_VERSION=openjdk-17-jdk
