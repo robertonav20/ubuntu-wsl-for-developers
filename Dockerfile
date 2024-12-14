@@ -10,14 +10,14 @@ ARG USER_NAME=developer
 ENV USER_NAME=$USER_NAME
 
 # Copy scripts
-COPY cli.sh ./
-COPY components.sh ./
-COPY user.sh ./
+COPY cli.sh cli.sh
+COPY components.sh components.sh
+COPY user.sh user.sh
 
 # Install
-RUN chmod 755 cli.sh && ./cli.sh && \
-    chmod 755 components.sh && ./components.sh && \
-    chmod 755 user.sh && ./user.sh
+RUN chmod 777 cli.sh && /tmp/./cli.sh 
+RUN chmod 777 components.sh && /tmp/./components.sh
+RUN chmod 777 user.sh && /tmp/./user.sh
 
 RUN rm -rf /tmp
 
