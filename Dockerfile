@@ -15,9 +15,9 @@ COPY components.sh components.sh
 COPY user.sh user.sh
 
 # Install
-RUN chmod 777 cli.sh && /tmp/./cli.sh 
-RUN chmod 777 components.sh && /tmp/./components.sh
-RUN chmod 777 user.sh && /tmp/./user.sh
+RUN chmod 777 /tmp/cli.sh && /tmp/./cli.sh 
+RUN chmod 777 /tmp/components.sh && /tmp/./components.sh
+RUN chmod 777 /tmp/user.sh && /tmp/./user.sh
 
 RUN rm -rf /tmp
 
