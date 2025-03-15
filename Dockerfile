@@ -11,7 +11,7 @@ ENV USER_NAME=$USER_NAME
 
 # Copy scripts and install
 COPY cli.sh cli.sh
-RUN ./cli.sh 
+RUN ./cli.sh
 
 COPY components.sh components.sh
 RUN ./components.sh

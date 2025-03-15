@@ -52,6 +52,7 @@ set -e
 # Define versions
 HELM_VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases/latest | grep 'tag_name' | cut -d\" -f4)
 K3D_VERSION=$(curl -s https://api.github.com/repos/k3d-io/k3d/releases/latest | grep 'tag_name' | cut -d\" -f4)
+KIND_VERSION=$(curl -s https://api.github.com/repos/kubernetes-sigs/kind/releases/latest | grep 'tag_name' | cut -d\" -f4)
 KAMEL_VERSION=$(curl -s https://api.github.com/repos/apache/camel-k/releases/latest | grep 'tag_name' | cut -d\" -f4 | sed 's/v//')
 KUBECTL_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 KNATIVE_VERSION=$(curl -s https://api.github.com/repos/knative/client/releases/latest | grep 'tag_name' | cut -d\" -f4)
@@ -68,6 +69,9 @@ install_binary "kubectl" "https://storage.googleapis.com/kubernetes-release/rele
 
 # Download and install k3d
 install_binary "k3d" "https://github.com/k3d-io/k3d/releases/download/${K3D_VERSION}/k3d-linux-amd64" "${INSTALL_DIR}/k3d"
+
+# Download and install kind
+install_binary "kind" "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64" "${INSTALL_DIR}/kind"
 
 # Download and install Terraform
 install_binary_from_archive "terraform" "zip" "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" "terraform" "${INSTALL_DIR}/terraform"
