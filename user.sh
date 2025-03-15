@@ -23,6 +23,7 @@ echo -e "password\npassword" | passwd root
 useradd -m $USER_NAME
 echo -e "$USER_NAME\n$USER_NAME" | passwd $USER_NAME
 sudo usermod -aG sudo $USER_NAME
+sudo usermod -aG docker $USER_NAME
 sudo tee -a /etc/wsl.conf << EOF
 [user]
 default=$USER_NAME
@@ -87,3 +88,4 @@ find "$FONTS_DIR" -name '*Windows Compatible*' -delete
 runuser -u $USER_NAME -- fc-cache -fv
 
 echo "User configuration completed successfully."
+exit 0
