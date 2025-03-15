@@ -40,7 +40,7 @@ runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-completions.
 runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-history-substring-search.git /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-history-substring-search
 runuser -u $USER_NAME -- git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-autocomplete
 sudo tee -a /home/${USER_NAME}/.zshrc << EOF
-ZSH_THEME=\"powerlevel10k/powerlevel10k\"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Terminal autocomplete fix
 autoload -Uz compinit && compinit
