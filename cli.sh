@@ -112,3 +112,4 @@ else
 fi
 
 echo "All commmands installed successfully."
+exit 0
