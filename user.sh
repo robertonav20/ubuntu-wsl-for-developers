@@ -29,7 +29,6 @@ sudo tee -a /etc/wsl.conf << EOF
 default=$USER_NAME
 EOF
 
-
 # Add oh my zsh and p10k
 runuser -u $USER_NAME -- sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo "$USER_NAME" | runuser -u $USER_NAME -- chsh -s $(which zsh)
@@ -39,11 +38,17 @@ runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-syntax-highl
 runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-completions.git /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-completions
 runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-history-substring-search.git /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-history-substring-search
 runuser -u $USER_NAME -- git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-autocomplete
+
+# Configure .zshrc
+sed '/ZSH_THEME/ s?^?#?' /home/${USER_NAME}/.zshrc > /home/${USER_NAME}/.zshrc
+sed '/plugins/ s?^?#?' /home/${USER_NAME}/.zshrc > /home/${USER_NAME}/.zshrc
+sudo echo "export PATH=\$PATH:\$HOME/.local/bin" | cat - .zshrc | tee .zshrc
+sudo echo "export ZSH=\$HOME/.oh-my-zsh" | cat - .zshrc | tee .zshrc
+sudo echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" | cat - .zshrc | tee .zshrc
 sudo tee -a /home/${USER_NAME}/.zshrc << EOF
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Terminal autocomplete fix
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
 
 plugins=(
     git
