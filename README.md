@@ -75,3 +75,29 @@ To obtain the image there are 2 ways
     docker tag ubuntu-wsl:1.3.0 docker.io/robnav24241/customized-wsl-image:1.3.0
     docker push docker.io/robnav24241/customized-wsl-image:1.3.0
     ```
+
+## Useful WSL Command
+
+- Show All WSL
+
+    ```bash
+        wsl --list --all
+    ```
+
+- Import WSL
+
+    ```bash
+        wsl --import "Ubuntu-WSL-1.3.0" C:\\Users\\rob\\Ubuntu-WSL-1.3.0 .\\ubuntu-wsl-1.3.0.tar
+    ```
+
+- Install WSL
+
+    ```bash
+        wsl install -d Ubuntu-WSL-1.3.0
+    ```
+
+- Unregister WS
+
+    ```bash
+        wsl --unregister Ubuntu-WSL-1.3.0
+    ```
