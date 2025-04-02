@@ -1,14 +1,5 @@
 #!/bin/bash
 
-## REGION Functions
-declare -a fonts=(
-    FiraCode
-    Hack
-    JetBrainsMono
-    Meslo
-)
-##
-
 # Exit immediately if a command exits with a non-zero status
 set -e
 
@@ -76,6 +67,12 @@ typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=214
 
 EOF
 
+declare -a fonts=(
+    FiraCode
+    Hack
+    JetBrainsMono
+    Meslo
+)
 if [[ ! -d "$FONTS_DIR" ]]; then
     mkdir -p "$FONTS_DIR"
 fi

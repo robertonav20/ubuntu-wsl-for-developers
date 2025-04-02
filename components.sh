@@ -1,15 +1,20 @@
 #!/bin/bash
 
-## REGION Functions
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Define installation directory
+INSTALL_DIR="/usr/local/bin"
+
+# Update packages repositories
+sudo apt-get update
 
 # Define version
+GO_VERSION=go1.24.2.linux-amd64.tar.gz
 JAVA_VERSION=openjdk-17-jdk
 NODE_JS_VERSION=nodejs
 PYTHON_VERSION=python3-pip
 MAVEN=maven
-
-# Exit immediately if a command exits with a non-zero status
-set -e
 
 echo "Installing git and zsh"
 apt install -y git zsh
@@ -30,12 +35,16 @@ apt install -y $JAVA_VERSION
 echo "Installing $MAVEN"
 apt install -y $MAVEN
 
+# Install Go 24
+echo "Installing $GO_VERSION"
+curl -sL https://go.dev/dl/$GO_VERSION | tar zxf - -C /usr/share/
+ln -s /usr/share/go/bin/go /usr/local/bin/go
+ln -s /usr/share/go/bin/gofmt /usr/local/bin/gofmt
+
 # Install Docker and Docker Compose
 echo "Installing docker and docker-compose"
 
 # Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -59,6 +68,8 @@ sudo systemctl enable containerd.service
 sudo tee -a /etc/wsl.conf << EOF
 [boot]
 systemd=true
+[user]
+default=developer
 EOF
 
 echo "All components installed successfully."

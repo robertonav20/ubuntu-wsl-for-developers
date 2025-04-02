@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
 ## REGION Functions
 
 # Function to download and install a binary
@@ -45,9 +48,6 @@ install_binary_from_archive() {
     echo "$name installed at $(which $name)"
 }
 ##
-
-# Exit immediately if a command exits with a non-zero status
-set -e
 
 # Define versions
 HELM_VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases/latest | grep 'tag_name' | cut -d\" -f4)
@@ -102,14 +102,8 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install --bin-dir ${INSTALL_DIR} --install-dir ${INSTALL_DIR}/aws-cli --update
 
-# Add to PATH if not already in PATH
-if [[ ":$PATH:" != *":${INSTALL_DIR}:"* ]]; then
-    echo "Adding ${INSTALL_DIR} to PATH..."
-    echo "export PATH=\$PATH:${INSTALL_DIR}" >> ~/.bashrc
-    source ~/.bashrc
-else
-    echo "${INSTALL_DIR} already in PATH"
-fi
+# Install Dagger CLI
+curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=${INSTALL_DIR} sh
 
 echo "All commmands installed successfully."
 exit 0
