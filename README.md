@@ -3,7 +3,7 @@
 1. Running image
 
     ```bash
-    docker run --name ubuntu-wsl-1.3.0 -t ubuntu-wsl:1.3.0 bash
+    docker run --name ubuntu-wsl-1.3.0 -it ubuntu-wsl:1.3.0 bash -C exit
     ```
 
 2. Export container as tar file
@@ -15,7 +15,7 @@
 3. Move tar to windows file system
 
     ```bash
-    mkdir -p /mnt/c/Users/$USER/ && mv ubuntu-wsl-1.3.0.tar /mnt/c/Users/$USER/
+    mkdir -p /mnt/c/Users/$USER/Ubuntu-WSL-1.3.0 && mv ubuntu-wsl-1.3.0.tar /mnt/c/Users/$USER/
     ```
 
 4. Import tar file
