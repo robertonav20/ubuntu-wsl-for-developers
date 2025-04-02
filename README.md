@@ -3,31 +3,31 @@
 1. Running image
 
     ```bash
-    docker run --name ubuntu-wsl-1.2.0 -t ubuntu-wsl:1.2.0 bash
+    docker run --name ubuntu-wsl-1.3.0 -t ubuntu-wsl:1.3.0 bash
     ```
 
 2. Export container as tar file
 
     ```bash
-    docker export --output ubuntu-wsl-1.2.0.tar ubuntu-wsl-1.2.0
+    docker export --output ubuntu-wsl-1.3.0.tar ubuntu-wsl-1.3.0
     ```
 
 3. Move tar to windows file system
 
     ```bash
-    mkdir -p /mnt/c/Users/$USER/ && mv ubuntu-wsl-1.2.0.tar /mnt/c/Users/$USER/
+    mkdir -p /mnt/c/Users/$USER/ && mv ubuntu-wsl-1.3.0.tar /mnt/c/Users/$USER/
     ```
 
 4. Import tar file
 
     ```bash
-    wsl --import "Ubuntu-WSL-1.2.0" C:\\Users\\rob\\Ubuntu-WSL-1.2.0 .\\ubuntu-wsl-1.2.0.tar
+    wsl --import "Ubuntu-WSL-1.3.0" C:\\Users\\rob\\Ubuntu-WSL-1.3.0 .\\ubuntu-wsl-1.3.0.tar
     ```
 
 5. Install tar file
 
     ```bash
-    wsl install -d Ubuntu-WSL-1.2.0
+    wsl install -d Ubuntu-WSL-1.3.0
     ```
 
 NOTE: all steps can be done with `docker Desktop`
@@ -39,13 +39,13 @@ To obtain the image there are 2 ways
 1. `Build image`
 
     ```bash
-    docker build --tag ubuntu-wsl:1.2.0 --file Dockerfile .
+    docker build --tag ubuntu-wsl:1.3.0 --file Dockerfile .
     ```
 
 2. `Pull image`
 
     ```bash
-    docker pull ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.2.0
+    docker pull ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.3.0
     ```
 
 ## Publish image to github registry
@@ -59,8 +59,8 @@ To obtain the image there are 2 ways
 2. Push Github Registry
 
     ```bash
-    docker tag ubuntu-wsl:1.2.0 ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.2.0
-    docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.2.0
+    docker tag ubuntu-wsl:1.3.0 ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.3.0
+    docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.3.0
     ```
 
 3. Login Github Registry
@@ -72,6 +72,6 @@ To obtain the image there are 2 ways
 4. Push Docker Registry
 
     ```bash
-    docker tag ubuntu-wsl:1.2.0 docker.io/robnav24241/customized-wsl-image:1.2.0
-    docker push docker.io/robnav24241/customized-wsl-image:1.2.0
+    docker tag ubuntu-wsl:1.3.0 docker.io/robnav24241/customized-wsl-image:1.3.0
+    docker push docker.io/robnav24241/customized-wsl-image:1.3.0
     ```
