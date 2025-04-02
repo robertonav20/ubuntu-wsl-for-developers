@@ -31,12 +31,17 @@ runuser -u $USER_NAME -- git clone https://github.com/zsh-users/zsh-history-subs
 runuser -u $USER_NAME -- git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-autocomplete
 
 # Configure .zshrc
-sed '/ZSH_THEME/ s?^?#?' /home/${USER_NAME}/.zshrc > /home/${USER_NAME}/.zshrc
-sed '/plugins/ s?^?#?' /home/${USER_NAME}/.zshrc > /home/${USER_NAME}/.zshrc
-sudo echo "export PATH=\$PATH:\$HOME/.local/bin" | cat - .zshrc | tee .zshrc
-sudo echo "export ZSH=\$HOME/.oh-my-zsh" | cat - .zshrc | tee .zshrc
-sudo echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" | cat - .zshrc | tee .zshrc
 sudo tee -a /home/${USER_NAME}/.zshrc << EOF
+
+# Environment Variables
+export PATH=\$PATH:\$HOME/.local/bin
+export ZSH=\$HOME/.oh-my-zsh
+
+# Theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Load ZSH
+source \$ZSH/.oh-my-zsh
 
 # Terminal autocomplete fix
 autoload -Uz compinit && compinit -i
