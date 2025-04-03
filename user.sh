@@ -56,8 +56,8 @@ plugins=(
     zsh-syntax-highlighting
     zsh-autocomplete
 )
-source /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /home/${USER_NAME}/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source \$ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source \$ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 typeset -g POWERLEVEL9K_DIR_BACKGROUND=25
 typeset -g POWERLEVEL9K_DIR_FOREGROUND=15
@@ -93,6 +93,7 @@ done
 
 find "$FONTS_DIR" -name '*Windows Compatible*' -delete
 runuser -u $USER_NAME -- fc-cache -fv
+chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
 
 echo "User configuration completed successfully."
 exit 0
