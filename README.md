@@ -30,7 +30,7 @@
     wsl install -d Ubuntu-WSL-1.4.0
     ```
 
-NOTE: all steps can be done with `docker Desktop`
+NOTE: all steps can be done with `podman Desktop`
 <!--  -->
 ## Build image or pull image
 
@@ -63,7 +63,7 @@ To obtain the image there are 2 ways
     docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.4.0
     ```
 
-3. Login Github Registry
+3. Login Docker Registry
 
     ```bash
     echo "YOUR_PASSWORD" | docker login docker.io --username YOUR_USERNAME --password-stdin
@@ -96,8 +96,22 @@ To obtain the image there are 2 ways
         wsl install -d Ubuntu-WSL-1.4.0
     ```
 
-- Unregister WS
+- Unregister WSL
 
     ```bash
         wsl --unregister Ubuntu-WSL-1.4.0
     ```
+
+- Shutdown WSL
+
+    ```bash
+        wsl --shutdown
+    ```
+
+- Mount Windows Path to WSL
+
+    ```bash
+        sudo mkdir -p /mnt/share && sudo mount -t drvfs 'YOUR_WINDOWS_PATH' /mnt/share
+    ```
+
+NOTE: Default Windows path mount is disabled

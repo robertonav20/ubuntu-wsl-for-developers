@@ -16,8 +16,14 @@ echo -e "$USER_NAME\n$USER_NAME" | passwd $USER_NAME
 sudo usermod -aG sudo $USER_NAME
 sudo usermod -aG docker $USER_NAME
 sudo tee -a /etc/wsl.conf << EOF
+[boot]
+systemd=true
 [user]
 default=$USER_NAME
+[automount]
+enabled=false
+[interop]
+appendWindowsPath=false
 EOF
 
 # Add oh my zsh and p10k
