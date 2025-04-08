@@ -42,6 +42,7 @@ sudo tee -a /home/${USER_NAME}/.zshrc << EOF
 # Environment Variables
 export PATH=\$PATH:\$HOME/.local/bin
 export ZSH=\$HOME/.oh-my-zsh
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 # Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
