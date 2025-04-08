@@ -65,12 +65,6 @@ else
 fi
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
-sudo tee -a /etc/wsl.conf << EOF
-[boot]
-systemd=true
-[user]
-default=developer
-EOF
 
 echo "All components installed successfully."
 exit 0

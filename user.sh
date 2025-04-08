@@ -21,9 +21,9 @@ systemd=true
 [user]
 default=$USER_NAME
 [automount]
-enabled=false
+enabled=true
 [interop]
-appendWindowsPath=false
+appendWindowsPath=true
 EOF
 
 # Add oh my zsh and p10k
