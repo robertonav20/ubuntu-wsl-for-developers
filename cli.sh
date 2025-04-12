@@ -54,7 +54,6 @@ HELM_VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases/latest | 
 KIND_VERSION=$(curl -s https://api.github.com/repos/kubernetes-sigs/kind/releases/latest | grep 'tag_name' | cut -d\" -f4)
 KUBECTL_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 TILT_VERSION=$(curl -s https://api.github.com/repos/tilt-dev/tilt/releases/latest | grep 'tag_name' | cut -d\" -f4 | sed 's/v//')
-TILT_CTLPTL_VERSION=$(curl -s https://api.github.com/repos/tilt-dev/ctlptl/releases/latest | grep 'tag_name' | cut -d\" -f4 | sed 's/v//')
 
 # Define installation directory
 INSTALL_DIR="/usr/local/bin"
