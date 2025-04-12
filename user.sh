@@ -23,7 +23,8 @@ default=$USER_NAME
 [automount]
 enabled=true
 [interop]
-appendWindowsPath=true
+enabled=true
+appendWindowsPath=false
 EOF
 
 # Add oh my zsh and p10k

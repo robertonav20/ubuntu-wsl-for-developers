@@ -31,11 +31,11 @@ apt install -y $PYTHON_VERSION
 echo "Installing $JAVA_VERSION"
 apt install -y $JAVA_VERSION
 
-# Install Java 17
+# Install MAVEN
 echo "Installing $MAVEN"
 apt install -y $MAVEN
 
-# Install Go 24
+# Install Go 1.24
 echo "Installing $GO_VERSION"
 curl -sL https://go.dev/dl/$GO_VERSION | tar zxf - -C /usr/share/
 ln -s /usr/share/go/bin/go /usr/local/bin/go
