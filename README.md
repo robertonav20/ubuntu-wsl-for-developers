@@ -1,56 +1,66 @@
 # Ubuntu WSL for Developers :computer::zap:
 
-## Import image as wsl
+## Installation
 
-1. Running image
-
-   ```bash
-   docker run --name ubuntu-wsl-1.7.0 -it ubuntu-wsl:1.7.0 bash -C exit
-   ```
-
-2. Export container as tar file
-
-   ```bash
-   docker export --output ubuntu-wsl-1.7.0.tar ubuntu-wsl-1.7.0
-   ```
-
-3. Move tar to windows file system
-
-   ```bash
-   mkdir -p /mnt/c/Users/$USER/Ubuntu-WSL-1.7.0 && mv ubuntu-wsl-1.7.0.tar /mnt/c/Users/$USER/
-   ```
-
-4. Import tar file
+1. Download ubuntu-wsl-1.7.0.tag.gz from release
+2. Unpack it
+3. Import tar file
 
    ```bash
    wsl --import "Ubuntu-WSL-1.7.0" C:\\Users\\rob\\Ubuntu-WSL-1.7.0 .\\ubuntu-wsl-1.7.0.tar
    ```
 
-5. Install tar file
+4. Install tar file
+
+   ```bash
+   wsl install -d Ubuntu-WSL-1.7.0
+   ```
+
+## Import own image as wsl
+
+1. Build or Pull Image
+
+   ```bash
+   docker build --tag ubuntu-wsl:1.7.0 --file Dockerfile .
+   ```
+
+   OR
+
+   ```bash
+   docker pull ubuntu-wsl:1.7.0
+   ```
+
+2. Run image
+
+   ```bash
+   docker run --name ubuntu-wsl-1.7.0 -it ubuntu-wsl:1.7.0 bash -C exit
+   ```
+
+3. Export container as tar file
+
+   ```bash
+   docker export --output ubuntu-wsl-1.7.0.tar ubuntu-wsl-1.7.0
+   ```
+
+4. Move tar to windows file system
+
+   ```bash
+   mkdir -p /mnt/c/Users/$USER/Ubuntu-WSL-1.7.0 && mv ubuntu-wsl-1.7.0.tar /mnt/c/Users/$USER/
+   ```
+
+5. Import tar file
+
+   ```bash
+   wsl --import "Ubuntu-WSL-1.7.0" C:\\Users\\rob\\Ubuntu-WSL-1.7.0 .\\ubuntu-wsl-1.7.0.tar
+   ```
+
+6. Install tar file
 
    ```bash
    wsl install -d Ubuntu-WSL-1.7.0
    ```
 
 NOTE: all steps can be done with `podman Desktop`
-
-<!--  -->
-
-## Build image or pull image
-
-To obtain the image there are 2 ways
-
-1. `Build image`
-
-   ```bash
-   docker build --tag ubuntu-wsl:1.7.0 --file Dockerfile .
-   ```
-
-2. `Pull image`
-
-   ```bash
-   docker pull ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.7.0
-   ```
 
 ## Publish image to github registry
 
