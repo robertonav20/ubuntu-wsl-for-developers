@@ -1,11 +1,24 @@
-echo "Build Image ubuntu-wsl:1.6.0"
-docker build --tag ubuntu-wsl:1.6.0 --file Dockerfile .
+#!/bin/bash
 
-echo "Publish Image ubuntu-wsl:1.6.0"
-docker tag ubuntu-wsl:1.6.0 ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.6.0
-docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.6.0
+# Exit immediately if a command exits with a non-zero status
+set -e
 
-echo "Exporting Container ubuntu-wsl:1.6.0 as archive"
-docker stop ubuntu-wsl || true && docker rm ubuntu-wsl || true
-docker run --name ubuntu-wsl -it ubuntu-wsl:1.6.0 bash -C exit
-docker export --output ubuntu-wsl-1.6.0.tar ubuntu-wsl
+BUILD_VERSION=1.7.0
+
+echo "Build Image ubuntu-wsl:$BUILD_VERSION"
+docker build --tag ubuntu-wsl:$BUILD_VERSION --file Dockerfile .
+
+echo "Publish Image ubuntu-wsl:$BUILD_VERSION"
+docker tag ubuntu-wsl:$BUILD_VERSION ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:$BUILD_VERSION
+docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:$BUILD_VERSION
+
+echo "Exporting Container ubuntu-wsl:$BUILD_VERSION as archive"
+docker run --name ubuntu-wsl -it ubuntu-wsl:$BUILD_VERSION bash -C exit
+docker export --output ubuntu-wsl-$BUILD_VERSION.tar ubuntu-wsl
+docker rm ubuntu-wsl || true
+gzip -f ubuntu-wsl-$BUILD_VERSION.tar
+
+echo "Creating Tag and Release"
+git tag v$BUILD_VERSION
+git push origin v$BUILD_VERSION --tags
+gh release create v$BUILD_VERSION ubuntu-wsl-$BUILD_VERSION.tar.gz --title "V$BUILD_VERSION"

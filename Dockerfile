@@ -1,7 +1,17 @@
 FROM ubuntu:jammy
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y ca-certificates curl fontconfig nano sudo unzip vim wget && \
+    apt install -y ca-certificates \
+        curl \
+        wget \
+        nano \
+        sudo \
+        unzip \
+        vim \
+        fontconfig \
+        git \
+        zsh \
+        gh && \
     apt clean
 
 WORKDIR /tmp
@@ -27,7 +37,7 @@ RUN apt clean && rm -rf ./*
 WORKDIR /
 
 LABEL org.opencontainers.image.source=https://github.com/robertonav20/customized-wsl-image
-LABEL org.opencontainers.image.description="Customized Ubuntu WSL to speed up configuration"
+LABEL org.opencontainers.image.description="Preconfigured Ubuntu WSL for developers"
 LABEL org.opencontainers.image.licenses=MIT
 
 USER developer

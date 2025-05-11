@@ -12,16 +12,17 @@ sudo apt-get update
 # Define version
 GO_VERSION=go1.24.2.linux-amd64.tar.gz
 JAVA_VERSION=openjdk-17-jdk
-NODE_JS_VERSION=nodejs
+NVM_VERSION=v0.40.3
+NODE_VERSION=20
 PYTHON_VERSION=python3-pip
 MAVEN=maven
 
-echo "Installing git and zsh"
-apt install -y git zsh
-
 # Install NodeJS (Node Version Manager)
 echo "Installing $NODE_JS_VERSION"
-apt install -y $NODE_JS_VERSION
+export NVM_DIR=/root/.nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+source $NVM_DIR/nvm.sh
+nvm install $NODE_VERSION
 
 # Install Python 3
 echo "Installing $PYTHON_VERSION"
