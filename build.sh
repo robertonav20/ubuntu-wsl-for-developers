@@ -9,8 +9,8 @@ echo "Build Image ubuntu-wsl:$BUILD_VERSION"
 docker build --tag ubuntu-wsl:$BUILD_VERSION --file Dockerfile .
 
 echo "Publish Image ubuntu-wsl:$BUILD_VERSION"
-docker tag ubuntu-wsl:$BUILD_VERSION ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:$BUILD_VERSION
-docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:$BUILD_VERSION
+docker tag ubuntu-wsl:$BUILD_VERSION ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:$BUILD_VERSION
+docker push ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:$BUILD_VERSION
 
 echo "Exporting Container ubuntu-wsl:$BUILD_VERSION as archive"
 docker run --name ubuntu-wsl -it ubuntu-wsl:$BUILD_VERSION bash -C exit

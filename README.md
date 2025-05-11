@@ -10,7 +10,7 @@
    wsl --import "Ubuntu-WSL-1.7.0" C:\\Users\\rob\\Ubuntu-WSL-1.7.0 .\\ubuntu-wsl-1.7.0.tar
    ```
 
-4. Install tar file
+4. Create WSL Machine
 
    ```bash
    wsl install -d Ubuntu-WSL-1.7.0
@@ -54,7 +54,7 @@
    wsl --import "Ubuntu-WSL-1.7.0" C:\\Users\\rob\\Ubuntu-WSL-1.7.0 .\\ubuntu-wsl-1.7.0.tar
    ```
 
-6. Install tar file
+6. Create WSL Machine
 
    ```bash
    wsl install -d Ubuntu-WSL-1.7.0
@@ -73,8 +73,8 @@ NOTE: all steps can be done with `podman Desktop`
 2. Push Github Registry
 
    ```bash
-   docker tag ubuntu-wsl:1.7.0 ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.7.0
-   docker push ghcr.io/robertonav20/customized-wsl-image/ubuntu-wsl:1.7.0
+   docker tag ubuntu-wsl:1.7.0 ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:1.7.0
+   docker push ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:1.7.0
    ```
 
 3. Login Docker Registry
@@ -86,8 +86,8 @@ NOTE: all steps can be done with `podman Desktop`
 4. Push Docker Registry
 
    ```bash
-   docker tag ubuntu-wsl:1.7.0 docker.io/robnav24241/customized-wsl-image:1.7.0
-   docker push docker.io/robnav24241/customized-wsl-image:1.7.0
+   docker tag ubuntu-wsl:1.7.0 docker.io/robnav24241/ubuntu-wsl-for-developers:1.7.0
+   docker push docker.io/robnav24241/ubuntu-wsl-for-developers:1.7.0
    ```
 
 ## Useful WSL Command
