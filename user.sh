@@ -39,11 +39,8 @@ runuser -u $USER_NAME -- git clone https://github.com/marlonrichert/zsh-autocomp
 
 # Configure .zshrc
 sudo tee -a /home/${USER_NAME}/.zshrc << EOF
-
 # Environment Variables
-export PATH=\$PATH:\$HOME/.local/bin
 export ZSH=\$HOME/.oh-my-zsh
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 # Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -81,9 +78,6 @@ typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=214
 EOF
 
 declare -a fonts=(
-    FiraCode
-    Hack
-    JetBrainsMono
     Meslo
 )
 if [[ ! -d "$FONTS_DIR" ]]; then

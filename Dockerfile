@@ -1,11 +1,13 @@
 FROM ubuntu:jammy
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y ca-certificates \
+    apt install -y \
+    ca-certificates \
+    sudo \
     curl \
     wget \
     nano \
-    sudo \
+    htop \
     unzip \
     vim \
     fontconfig \
