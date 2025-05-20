@@ -29,6 +29,7 @@ mkdir -p ${NVM_DIR}
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
 source ${NVM_DIR}/nvm.sh
 nvm install ${NODE_VERSION}
+echo -e "source ${NVM_DIR}/nvm.sh" | tee -a /etc/zsh/zshenv
 
 # Install Java 17
 echo "Installing ${JAVA_VERSION}"
