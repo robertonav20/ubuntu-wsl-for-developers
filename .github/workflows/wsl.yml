@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     env:
       BUILD_VERSION: ${{ github.ref_name }}
     steps:
