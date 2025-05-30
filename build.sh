@@ -16,7 +16,7 @@ docker rm -f ubuntu-wsl || true
 docker export ubuntu-wsl > ubuntu-wsl-$BUILD_VERSION.tar
 gzip -f ubuntu-wsl-$BUILD_VERSION.tar
 
-echo "Creating Tag and Release"
+#echo "Creating Tag and Release"
 #git tag v$BUILD_VERSION
 #git push origin v$BUILD_VERSION --tags
 #gh release create v$BUILD_VERSION ubuntu-wsl-$BUILD_VERSION.tar.gz --title "v$BUILD_VERSION"
