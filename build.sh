@@ -3,8 +3,6 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-BUILD_VERSION=1.0.1
-
 echo "Build Image ubuntu-wsl:$BUILD_VERSION"
 docker build --tag ubuntu-wsl:$BUILD_VERSION --file Dockerfile .
 
