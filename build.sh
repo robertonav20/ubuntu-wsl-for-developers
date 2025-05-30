@@ -12,9 +12,9 @@ docker push ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:$BUILD_VER
 
 echo "Exporting Container ubuntu-wsl:$BUILD_VERSION as archive"
 docker run --name ubuntu-wsl -it ubuntu-wsl:$BUILD_VERSION bash -C exit
-docker rm -f ubuntu-wsl || true
 docker export ubuntu-wsl > ubuntu-wsl-$BUILD_VERSION.tar
 gzip -f ubuntu-wsl-$BUILD_VERSION.tar
+docker rm -f ubuntu-wsl || true
 
 #echo "Creating Tag and Release"
 #git tag v$BUILD_VERSION
