@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_VERSION: ${{ github.ref_name }}
-      GITHUB_USERNAME: ${{ github.actor }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - name: 'Login to GitHub Container Registry'
