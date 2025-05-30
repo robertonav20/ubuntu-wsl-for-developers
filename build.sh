@@ -8,7 +8,6 @@ docker build --tag ubuntu-wsl:$BUILD_VERSION --file Dockerfile .
 
 echo "Publish Image ubuntu-wsl:$BUILD_VERSION"
 docker tag ubuntu-wsl:$BUILD_VERSION ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:$BUILD_VERSION
-echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
 docker push ghcr.io/robertonav20/ubuntu-wsl-for-developers/ubuntu-wsl:$BUILD_VERSION
 
 echo "Exporting Container ubuntu-wsl:$BUILD_VERSION as archive"
